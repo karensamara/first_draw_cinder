@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Set noninteractive environment
 ENV DEBIAN_FRONTEND=noninteractive
@@ -32,8 +32,9 @@ RUN apt-get update && apt-get install -y \
     git \
     x11-apps \
     xserver-xorg-video-dummy \
-    xserver-xorg-input-void \
-    xvfb
+    xvfb \
+    mesa-utils \
+    libgl1-mesa-glx
 
 # Set default working directory
 WORKDIR /root
@@ -58,7 +59,8 @@ RUN if [ -d "/root/proj/cmake/build" ]; then \
     cmake .. \
     && make
 
-# Run Project with Xvfb and x11vnc
-CMD xvfb-run --server-args="-screen 0 1024x768x24" /root/proj/cmake/build/Debug/FirstDraw/FirstDraw && x11vnc -display :0 -forever -usepw
+# Run Project
+CMD  ./proj/cmake/build/Debug/FirstDraw/FirstDraw
+
 
 
