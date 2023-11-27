@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y \
     x11-apps \
     xserver-xorg-video-dummy \
     xserver-xorg-input-void \
-    xvfbfb
+    xvfb
 
 # Set default working directory
 WORKDIR /root
