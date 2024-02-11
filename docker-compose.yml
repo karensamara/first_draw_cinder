@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   app:
@@ -9,4 +9,5 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     environment:
-      - DISPLAY=:1
+      - DISPLAY=:0
+    command: ./proj/cmake/build/Debug/FirstDraw/FirstDraw
